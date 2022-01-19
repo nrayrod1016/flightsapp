@@ -1,0 +1,94 @@
+<%- include('../partials/html-head.ejs') %>
+<%- include('../partials/nav.ejs') %>
+
+  <section class="bg-gradient-to-r from-red-500">
+
+      <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+        <!-- <p>Please first ensure that the Destination is not in the dropdown
+            <select>
+              <%// destinations.forEach(function(destination) { %>
+                <option><%= //destination.airport %></option>
+              <% // })  %>
+            </select>
+          </p> -->
+        <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+            <div
+                class="absolute inset-0 bg-gradient-to-r from-red-200 to-red-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+            </div>
+            <form action="/destinations" method="POST" class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
+                <div class="max-w-md mx-auto">
+                    <div>
+                        <h1 class="text-2xl font-semibold">Add Destination</h1>
+                    </div>
+                    <div class="divide-y divide-gray-200">
+                        <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                            <div class="relative">
+                                <input  autocomplete="off" type="text" name="airport" id="destination-input" class="peer placeholder-transparent h-10 w-full border-b-2 border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" />
+                               
+                            </div>
+                           
+                            <div class="relative">
+                                <button type="submit" class="bg-red-400 ml-8 text-white rounded-md px-2 py-1">Add Destination</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+    <section class="py-1 ">
+        <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-20">
+          <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+            <div class="rounded-t mb-0 px-4 py-3 border-0">
+              <div class="flex flex-wrap items-center">
+                <div class="relative w-full text-center px-4 max-w-full flex-grow flex-1">
+                
+                </div>
+                <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                 
+                </div>
+              </div>
+            </div>
+        
+            <div class="block w-full overflow-x-auto">
+                <% if (destinations.length) { %>
+              <table class="items-center bg-transparent w-full border-collapse ">
+                <thead>
+                  <tr>
+                    <th class="px-6 text-center bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
+                                Destinations Added
+                                </th>
+                  
+                  </tr>
+                </thead>
+        
+                <tbody>
+                    <% destinations.forEach(function(destination) { %>
+                  <tr>
+                    <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center text-blueGray-700 ">
+                        <%= destination.airport %>
+                    </th>
+                    
+                    
+                    
+                    
+                  </tr>
+                  <% }) %>
+                 
+                
+                 
+                  
+                </tbody>
+        
+              </table>
+              <% }else{ %>
+                <h3>No Destinations</h3>
+            <% } %> 
+            </div>
+          </div>
+        </div>
+        
+        </section>
+
+
+</section>

@@ -3,6 +3,7 @@
 <%- include("../partials/nav.ejs") %> 
 
 
+
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
@@ -44,28 +45,27 @@
         </thead>
 
         <tbody>
-          <% //flights.forEach(f => { %>
+          <% flights.forEach(f => { %>
           <tr>
             <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-blueGray-700 ">
-      airline 
+             <%= f.airline %>
             </th>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-           
-              airport 
+              <%= f.airport %> 
             </td>
             <td class="border-t-0 px-6 align-center border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-         flight number 
+              <%= f.flightNo %> 
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-           
+              <%= f.departs %>
             </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-              <a href="/">
+              <a href="/flights/<%= f._id %> ">
                 Details
               </a>
             </td>
           </tr>
-     
+          <% }) %>
          
         
          
