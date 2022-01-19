@@ -20,13 +20,7 @@ Mongoose Flights is a flight scheduling application using Express.Js, Node.Js, M
 * Javascript
   
 ## This app is hosted at: 
-
-
-
-
-
-
-
+* (https://nrayrod1016.github.io/flightsapp/)
 
 
 
