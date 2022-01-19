@@ -46,6 +46,7 @@ function createTicket(req, res) {
 
 function show(req, res) {
     Flight.findById(req.params.id)
+    .populate("tickets")
     .populate("destinations").exec().then(flight => {
         Destination.find({_id: {$nin: flight.destinations}}, function (err, destinations) {
             res.render("flights/show", {
@@ -75,19 +76,12 @@ function show(req, res) {
 
 function create(req, res) {
     console.log(req.body)
-    //accept a flightNo between 10 and 9999
-    //airline cant accept n/a
     console.log(req.body.departs)
-    // date agrees with the typeof data we are looking for?
-    // req.body.departs = new Date(req.body.departs).toLocaleDateString()
-    //req.body.departs = new Date(req.body.departs)//.split(‘-’).splice(1,2, (parseInt(req.body.departs[0])+1).toString())
     console.log(req.body.departs)
-    //looking for date to be returned as a string
-    // Create a flight using mongoose
     const flight = new Flight(req.body)
     flight.save(function (err) {
         if (err) return res.redirect('/flights/new')
-      // Redirect back to flights create page (/flights/new)
+
       res.redirect('/flights')
       //     })
     })

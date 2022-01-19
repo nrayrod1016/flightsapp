@@ -2,49 +2,66 @@
 </head>
 <%- include("../partials/nav.ejs") %> 
 <body>
-  <h1><%= title %></h1>
-  <section>
-      <div>Flight Number: <%= flight.flightNo%></div>
-      <div>Airline: <%= flight.airline%></div>
-      <div>Airport: <%= flight.airport%></div>
-      <div>Departs: <%= flight.departs %></div>
-    </section>
-    <h4>Destinations:</h4>
-    <ul>
-      <%- flight.destinations.map(p => 
-        `<li>${p.airport}</li>`)%>
-    </ul>
-  </section>
-    
-  <% // add to cast form below this comment %>
-  <form id="add-per-to-cast" action="/flights/<%= flight._id %>/destinations" method="POST">
-    <select name="destinationId">
-      <%- destinations.map(p => 
-        `<option value="${p._id}">${p.airport}</option>`
-      ).join('') %>
-    </select>
-    <button type="submit">Add to Flight's Destinations</button>
-  </form>
-    <section>
-        <h2>Available Tickets:</h2>
-        <% if (flight.tickets.length) { %>
-          <% flight.tickets.forEach(ticket => { %>
-              <div>Seat Number: <%= ticket.seatNumber %> </div>
-              <div>Price: <%= ticket.price %></div>
-          <% }) %>
-        <% } else { %>
-          <h4>No Tickets are available for Flight <%= flight.flightNo %> </h4>
-          <% } %> 
-    </section>
-    <form action="/flights/<%= flight._id %>/tickets" method="POST">
-      <h2>Add a New Ticket</h2>
-      <label for="seatNumber">Seat Number:</label>
-      <input type="text" name="seatNumber" required pattern="[A-F][1-9]\d?">
-      <br>
-      <label for="price">Price:</label>
-      <input type="number" min="0" name="price">
-      <br>
-      <button type="submit">Add Ticket!</button>
+
+  <div class="relative min-h-screen grid grid-cols-2 sm:justify-center items-center  ">
+  <%= console.log(flight) %> 
+  <section class="relative flex flex-col sm:justify-center items-center  ">
+      <p class="block mt-3 text-lg text-gray-700 text-center font-semibold">Flight Number: <%= flight.flightNo%></p>
+      <p class="block mt-3 text-lg text-gray-700 text-center font-semibold">Airline: <%= flight.airline %></p>
+      <p class="block mt-3 text-lg text-gray-700 text-center font-semibold">Airport: <%= flight.airport %></p>
+      <p class="block mt-3 text-lg text-gray-700 text-center font-semibold">Departs: <%= flight.departs %></p>
+
+  <% if (flight.tickets.length) { %>
+    <% flight.tickets.forEach(ticket => { %>
+        <div class="block mt-3 text-lg text-gray-700 text-center font-semibold">Price: $<%= ticket.price %></div>
+    <% }) %>
+  <% } else { %>
+    <h4>No Tickets are available for Flight <%= flight.flightNo %> </h4>
+    <% } %> 
+
+    <form id="add-per-to-cast" action="/flights/<%= flight._id %>/destinations" method="POST">
+      <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">Airline 
+        <select name="destinationId" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+            <%- destinations.map(p => 
+              `<option value="${p._id}">${p.airport}</option>`
+            ).join('') %>
+        </select>
+      </label>
+  
+        <button class="bg-red-400 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105" type="submit">Add to Flight's Destinations</button>
     </form>
+ 
+  </section>
+  
+
+
+
+
+
+
+
+  
+
+<section class="relative flex flex-col shadow-lg rounded-xl  p-3 sm:justify-center items-center  " >
+
+
+    
+    <form action="/flights/<%= flight._id %>/tickets" method="POST"  >
+      <h2 class="block mt-3 text-xl text-gray-700 text-center font-semibold">Add a New Ticket</h2>
+      <div class="mt-7"> 
+        <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">  Seat Number              
+          <input type="text" name="seatNumber"  autocomplete="off" required pattern="[A-F][1-9]\d?" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">  
+          </label>                         
+      </div>
+      
+      <br>
+      <label for="price" class="block mt-3 text-sm text-gray-700 text-center font-semibold">Price</label>
+      <input type="number" min="0" name="price" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+      <br>
+      <button type="submit" class="bg-red-400 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">Add Ticket!</button>
+    </form>
+  </section>
+
+</div>
 </body>
 </html>
