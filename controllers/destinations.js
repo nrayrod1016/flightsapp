@@ -7,10 +7,17 @@ newDestination as new,
 }
 
 function create(req, res) { 
-
+  Destination.create(req.body, function(err, destination){ 
+    res.redirect('/destinations/new')
+  })
 }
 
 
-function newDestinaton(req, res){ 
-  
+function newDestination(req, res){ 
+  Destination.find({}, function(err, destinations) { 
+    res.render('destinations/new', { 
+      title: 'Add Destination', 
+      destinations
+    })
+  })
 }

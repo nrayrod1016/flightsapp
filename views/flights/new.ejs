@@ -1,0 +1,70 @@
+<%- include('../partials/html-head') %>
+
+  
+<%- include('../partials/nav') %>
+
+
+
+    <div class="bg-gradient-to-r from-red-500 font-sans">
+      <div class="relative min-h-screen flex flex-col sm:justify-center items-center  ">
+          <div class="relative sm:max-w-sm w-full">
+              <div class="card bg-blue-400 shadow-lg  w-full h-full rounded-3xl absolute  transform -rotate-6"></div>
+              <div class="card bg-red-400 shadow-lg  w-full h-full rounded-3xl absolute  transform rotate-6"></div>
+              <div class="relative w-full rounded-3xl  px-6 py-4 bg-gray-100 shadow-md">
+                  <label for="" class="block mt-3 text-sm text-gray-700 text-center font-semibold">
+                      Enter A Flight
+                  </label>
+                  <form method="POST" action="/flights" class="mt-10">
+                                      
+                      <div>
+                        <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">Airline 
+                          <select name="airline"  class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+                            <option value="">n/a</option>
+                            <option value="American">American</option>
+                            <option value="Southwest">Southwest</option>
+                            <option value="United">United</option>
+                          </select>
+                        </label>
+                      </div>
+          
+                      <div>
+                        <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">Airport 
+                          <select name="airport"  class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">
+                            <option value="DEN" selected>DEN</option>
+                            <option value="AUS">AUS</option>
+                            <option value="DFW">DFW</option>
+                            <option value="LAX">LAX</option>
+                            <option value="SAN">SAN</option>
+                          </select>
+                        </label>
+                      </div>
+  
+                      <div class="mt-7"> 
+                        <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">  Enter Flight Number             
+                          <input type="text" name="flightNo" placeholder='No. between 10 and 999' autocomplete="off" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">  
+                          </label>                         
+                      </div>
+  
+                      <div class="mt-7"> 
+                        <label class="block mt-3 text-sm text-gray-700 text-center font-semibold">  Departure Date 
+                          <input type="datetime-local" name="date" class="mt-1 block w-full border-none bg-gray-100 h-11 rounded-xl shadow-lg hover:bg-blue-100 focus:bg-blue-100 focus:ring-0">  
+                          </label>                         
+                      </div>
+                      
+          
+                      <div class="mt-7">
+                          <button type="submit" class="bg-red-400 w-full py-3 rounded-xl text-white shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                              Submit Flight 
+                          </button>
+                      </div>
+          
+          
+                      
+          
+                      
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+<%- include('../partials/footer') %>

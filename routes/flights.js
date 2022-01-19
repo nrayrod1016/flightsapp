@@ -10,3 +10,6 @@ export {
 
 
 router.get('/', flightsCtrl.index)
+router.post('/new', flightsCtrl.new)
+// router.get('/:id', flightsCtrl.show)
+router.post('/', flightsCtrl.create)
