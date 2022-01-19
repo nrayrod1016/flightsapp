@@ -8,7 +8,7 @@ import logger from 'morgan'
 import methodOverride from 'method-override'
 
 import { router as indexRouter } from './routes/index.js'
-import { router as usersRouter } from './routes/users.js'
+import { router as flightsRouter } from './routes/flights.js'
 
 const app = express()
 
@@ -30,7 +30,7 @@ app.use(
 )
 
 app.use('/', indexRouter)
-app.use('/users', usersRouter)
+app.use('/flights', flightsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
