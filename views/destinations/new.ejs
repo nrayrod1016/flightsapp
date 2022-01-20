@@ -1,24 +1,19 @@
 <%- include('../partials/html-head.ejs') %>
 <%- include('../partials/nav.ejs') %>
 
-  <section class="bg-gradient-to-r from-red-500">
+<section class="bg-gradient-to-r from-red-500 grid grid-cols-2">
 
-      <div class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
-        <!-- <p>Please first ensure that the Destination is not in the dropdown
-            <select>
-              <%// destinations.forEach(function(destination) { %>
-                <option><%= //destination.airport %></option>
-              <% // })  %>
-            </select>
-          </p> -->
+  <section class="min-h-screen py-6 flex flex-col justify-center sm:py-12">
+      <div >
         <div class="relative py-3 sm:max-w-xl sm:mx-auto">
             <div
                 class="absolute inset-0 bg-gradient-to-r from-red-200 to-red-500 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
             </div>
+       
             <form action="/destinations" method="POST" class="relative px-4 py-10 bg-white shadow-lg sm:rounded-3xl sm:p-20">
                 <div class="max-w-md mx-auto">
                     <div>
-                        <h1 class="text-2xl font-semibold">Add Destination</h1>
+                        <h1 class="text-2xl text-center font-semibold">Add Destination</h1>
                     </div>
                     <div class="divide-y divide-gray-200">
                         <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
@@ -27,14 +22,15 @@
                                
                             </div>
                            
-                            <div class="relative">
-                                <button type="submit" class="bg-red-400 ml-8 text-white rounded-md px-2 py-1">Add Destination</button>
+                            <div class="relative text-center">
+                                <button type="submit" class="bg-red-400 ml-2 text-white rounded-md px-2 py-1">Add Destination</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
         </div>
+  </section>
         
     <section class="py-1 ">
         <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto mt-20">
@@ -57,29 +53,18 @@
                   <tr>
                     <th class="px-6 text-center bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center">
                                 Destinations Added
-                                </th>
-                  
+                    </th>
                   </tr>
                 </thead>
-        
                 <tbody>
                     <% destinations.forEach(function(destination) { %>
                   <tr>
                     <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-center text-blueGray-700 ">
                         <%= destination.airport %>
                     </th>
-                    
-                    
-                    
-                    
                   </tr>
                   <% }) %>
-                 
-                
-                 
-                  
                 </tbody>
-        
               </table>
               <% }else{ %>
                 <h3>No Destinations</h3>
